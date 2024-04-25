@@ -9,6 +9,7 @@ class Server {
     this.endpoints = {
       auth: '/api/auth',
       characters: '/api/characters',
+      films: '/api/movies',
     }
 
     // Middlewares
@@ -32,6 +33,7 @@ class Server {
   routes() {
     this.app.use(this.endpoints.auth, authRoutes)
     this.app.use(this.endpoints.characters, characterRoutes)
+    this.app.use(this.endpoints.films, filmRoutes)
   }
 
   start() {

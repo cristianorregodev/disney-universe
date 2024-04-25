@@ -1,4 +1,5 @@
 const Character = require('../models').character
+const Film = require('../models').film
 const User = require('../models').user
 const existCharacterById = async (id = '') => {
   // Verificar si el personaje existe
@@ -11,4 +12,10 @@ const existEmail = async (email = '') => {
   const isEmail = await User.findOne({ where: { email } })
   if (isEmail) throw new Error(`El correo: ${email} ya se encuentra registrado`)
 }
-module.exports = { existCharacterById, existEmail }
+
+const existMovieById = async (id = '') => {
+  // Verificar si la pelicula existe
+  const isMovie = await Film.findByPk(id)
+  if (!isMovie) throw new Error(`La pelicula con id: ${id} no existe`)
+}
+module.exports = { existCharacterById, existEmail, existMovieById }

@@ -36,7 +36,7 @@ const edit = async (req, res) => {
     }
     res.status(200).json({ message: 'Personaje actualizado exitosamente' })
   } catch (error) {
-    console.error('Error al crear personaje:', error)
+    console.error('Error al editar el personaje:', error)
     res.status(500).json({ error: 'Error interno del servidor' })
   }
 }
@@ -47,7 +47,7 @@ const destroy = async (req, res) => {
     await Character.destroy({ where: { id }, paranoid: true })
     res.status(200).json({ message: 'Personaje eliminado exitosamente' })
   } catch (error) {
-    console.error('Error al crear personaje:', error)
+    console.error('Error al eliminar personaje:', error)
     res.status(500).json({ error: 'Error interno del servidor' })
   }
 }

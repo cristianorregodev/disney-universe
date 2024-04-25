@@ -12,4 +12,16 @@ const charactersQuerys = (params) => {
   return query
 }
 
-module.exports = { charactersQuerys }
+const moviesQuerys = (params) => {
+  const { title, genre, order } = params
+  const query = {}
+  query['where'] = {}
+
+  if (title) query['where'].title = { [Op.like]: `%${title}%` }
+  if (genre) query['include'] = [{ association: 'genre', where: { id: genre } }]
+  if (order) query['order'] = [['title', order]]
+
+  return query
+}
+
+module.exports = { charactersQuerys, moviesQuerys }

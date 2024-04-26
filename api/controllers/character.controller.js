@@ -11,6 +11,20 @@ const list = async (req, res) => {
   }
 }
 
+const show = async (req, res) => {
+  try {
+    const { id } = req.params
+    const character = await Character.findByPk(id, {
+      include: [{ association: 'films', attributes: ['id', 'title', 'image', 'release', 'stars'] }],
+      attributes: { exclude: ['createdAt', 'updatedAt', 'deletedAt'] },
+    })
+    res.json({ character })
+  } catch (error) {
+    console.error('Error al obtener personaje:', error)
+    res.status(500).json({ error: 'Error interno del servidor' })
+  }
+}
+
 const create = async (req, res) => {
   try {
     const { films, ...data } = req.body
@@ -51,4 +65,4 @@ const destroy = async (req, res) => {
     res.status(500).json({ error: 'Error interno del servidor' })
   }
 }
-module.exports = { list, create, edit, destroy }
+module.exports = { list, create, edit, destroy, show }

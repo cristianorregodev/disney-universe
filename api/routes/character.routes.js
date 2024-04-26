@@ -20,6 +20,8 @@ router.get(
   characterController.list
 )
 
+router.get('/:id', [check('id').custom(dbValidators.existCharacterById), fieldsValidations], characterController.show)
+
 router.post(
   '/',
   [

@@ -20,6 +20,8 @@ router.get(
   filmController.list
 )
 
+router.get('/:id', [check('id').custom(dbValidators.existMovieById), fieldsValidations], filmController.show)
+
 router.post(
   '/',
   [

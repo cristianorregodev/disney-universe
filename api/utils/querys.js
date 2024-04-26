@@ -18,7 +18,7 @@ const charactersQuerys = (params) => {
 const moviesQuerys = (params) => {
   const { title, genre, order } = params
   const query = {
-    attributes: ['id', 'title', 'image', 'release'],
+    attributes: ['id', 'title', 'image', 'release', 'stars'],
   }
   query['where'] = {}
 

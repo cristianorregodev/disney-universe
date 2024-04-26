@@ -46,6 +46,11 @@ El proyecto utiliza `Node.js` con Express para el servidor backend, lo que es ad
 |                                          | Implementación de la lógica de búsqueda y filtrado  | 4 horas    |
 | TOTAL                                    |                                                     | 40 horas   |
 
-### Previw
+### Preview
 
 https://disney-universe-ui.netlify.app/
+
+Credenciales de accecso a rutas protegidas:
+
+- Email: disney@disney.com
+- Password: 12345678

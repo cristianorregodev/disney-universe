@@ -1,5 +1,5 @@
 const { VITE_API_URL } = import.meta.env
-import { Card } from '../components/Card'
+import { CharacterItem } from '../components/CharacterItem'
 import { useGetData } from '../hooks/useGetData'
 
 export const CharactersList = () => {
@@ -12,7 +12,7 @@ export const CharactersList = () => {
       {data && (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 py-4">
           {data?.slice(0, 4).map((character) => (
-            <Card key={character.id} data={{ title: character.name }} />
+            <CharacterItem key={character.id} character={character} />
           ))}
         </div>
       )}

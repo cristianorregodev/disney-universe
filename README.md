@@ -45,3 +45,7 @@ El proyecto utiliza `Node.js` con Express para el servidor backend, lo que es ad
 | Búsqueda de Películas/Series             | Diseño de la ruta /movies?query                     | 1 horas    |
 |                                          | Implementación de la lógica de búsqueda y filtrado  | 4 horas    |
 | TOTAL                                    |                                                     | 40 horas   |
+
+### Previw
+
+https://disney-universe-ui.netlify.app/

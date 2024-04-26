@@ -3,10 +3,7 @@ import { useContext } from 'react'
 import { AuthContext } from '../context/AuthContext'
 
 export const Header = () => {
-  const {
-    isAuth: { name },
-    removeAuth,
-  } = useContext(AuthContext)
+  const { isAuth, removeAuth } = useContext(AuthContext)
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -56,12 +53,12 @@ export const Header = () => {
               </Link>
             </li>
             <li>
-              {name ? (
+              {isAuth?.name ? (
                 <button
                   onClick={removeAuth}
                   className="dark:text-blue-500 md:dark:hover:text-white flex justify-center items-center gap-2"
                 >
-                  {name}{' '}
+                  {isAuth?.name}{' '}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"

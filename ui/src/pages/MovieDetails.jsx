@@ -2,10 +2,15 @@ const { VITE_API_URL } = import.meta.env
 import { useParams } from 'react-router-dom'
 import { useGetData } from '../hooks/useGetData'
 import { CharacterItem } from '../components/CharacterItem'
+import { useContext } from 'react'
+import { AuthContext } from '../context/AuthContext'
 
 export const MovieDetails = () => {
   const { id } = useParams()
-  const { data, loading, error } = useGetData(`${VITE_API_URL}/movies/${id}`, 'movie')
+  const {
+    isAuth: { token },
+  } = useContext(AuthContext)
+  const { data, loading, error } = useGetData(`${VITE_API_URL}/movies/${id}`, 'movie', token)
   return (
     <>
       {loading && <p>Loading...</p>}

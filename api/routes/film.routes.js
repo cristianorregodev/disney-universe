@@ -1,7 +1,7 @@
 const { Router } = require('express')
 const { check } = require('express-validator')
 const filmController = require('../controllers/film.controller.js')
-const { fieldsValidations, dbValidators } = require('../middlewares')
+const { fieldsValidations, dbValidators, validateJWT } = require('../middlewares')
 
 const router = Router()
 
@@ -20,7 +20,11 @@ router.get(
   filmController.list
 )
 
-router.get('/:id', [check('id').custom(dbValidators.existMovieById), fieldsValidations], filmController.show)
+router.get(
+  '/:id',
+  [validateJWT, check('id').custom(dbValidators.existMovieById), fieldsValidations],
+  filmController.show
+)
 
 router.post(
   '/',

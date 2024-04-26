@@ -1,6 +1,12 @@
 import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { AuthContext } from '../context/AuthContext'
 
 export const Header = () => {
+  const {
+    isAuth: { name },
+    removeAuth,
+  } = useContext(AuthContext)
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -48,6 +54,39 @@ export const Header = () => {
               >
                 Movies
               </Link>
+            </li>
+            <li>
+              {name ? (
+                <button
+                  onClick={removeAuth}
+                  className="dark:text-blue-500 md:dark:hover:text-white flex justify-center items-center gap-2"
+                >
+                  {name}{' '}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+                    <path d="M9 12h12l-3 -3" />
+                    <path d="M18 15l3 -3" />
+                  </svg>
+                </button>
+              ) : (
+                <Link
+                  to="/login"
+                  className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-blue-500 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                >
+                  Login
+                </Link>
+              )}
             </li>
           </ul>
         </div>

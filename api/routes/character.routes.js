@@ -1,7 +1,7 @@
 const { Router } = require('express')
 const { check } = require('express-validator')
 const characterController = require('../controllers/character.controller.js')
-const { fieldsValidations, dbValidators } = require('../middlewares')
+const { fieldsValidations, dbValidators, validateJWT } = require('../middlewares')
 
 const router = Router()
 
@@ -20,7 +20,11 @@ router.get(
   characterController.list
 )
 
-router.get('/:id', [check('id').custom(dbValidators.existCharacterById), fieldsValidations], characterController.show)
+router.get(
+  '/:id',
+  [validateJWT, check('id').custom(dbValidators.existCharacterById), fieldsValidations],
+  characterController.show
+)
 
 router.post(
   '/',

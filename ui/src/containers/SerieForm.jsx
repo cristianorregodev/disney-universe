@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addSeries } from '../redux/seriesSlice'
 import { createSerie } from '../services/series'
+import { useNavigate } from 'react-router-dom'
 
 export const SerieForm = () => {
     const [newMovie, setNewMovie] = useState({})
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const handleNewMovie = (event) => {
         const { name, value } = event.target
@@ -16,6 +18,7 @@ export const SerieForm = () => {
         //dispatch(addSeries(newMovie))
         createSerie(newMovie).then((data) => {
             dispatch(addSeries({ ...newMovie, id: data }))
+            navigate('/series')
         })
     }
     return (
